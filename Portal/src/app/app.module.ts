@@ -12,7 +12,6 @@ import { NfeModule } from './features/documentos/nfe/nfe.module';
 import { GerenciamentoComponent } from './features/gerenciamento/gerenciamento.component';
 import { DocumentosComponent } from './features/documentos/documentos.component';
 import { SharedModule } from './shared/shared.module';
-import { ThfModule } from '@totvs/thf-ui';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { ThfModule } from '@totvs/thf-ui';
     RouterModule.forRoot([]),
     PoTemplatesModule,
     NfeModule,
-    SharedModule,
-    ThfModule
+    SharedModule
   ],
   providers: [AppServiceService],
   bootstrap: [AppComponent]

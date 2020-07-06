@@ -1,4 +1,4 @@
-# Estagio 1 - Será responsavel em construir nossa aplicação
+# Estagio 1 - Serï¿½ responsavel em construir nossa aplicaï¿½ï¿½o
 FROM node:12-slim as node
 
 WORKDIR /app
@@ -15,7 +15,7 @@ ARG env=prod
 
 RUN npm run build
 
-# Estagio 2 - Será responsavel por expor a aplicação
+# Estagio 2 - Serï¿½ responsavel por expor a aplicaï¿½ï¿½o
 
 FROM nginx
 

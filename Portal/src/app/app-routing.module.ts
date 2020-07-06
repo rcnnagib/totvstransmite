@@ -6,7 +6,7 @@ import { GerenciamentoComponent } from './features/gerenciamento/gerenciamento.c
 
 
 const routes: Routes = [
-  { path: '', component: NfeComponent },
+  { path: '', component: DocumentosComponent },
   { path: 'documentos', component: DocumentosComponent },
   { path: 'gerenciamento', component: GerenciamentoComponent }
 

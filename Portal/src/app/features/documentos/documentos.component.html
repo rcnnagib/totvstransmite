@@ -1,13 +1,15 @@
-<app-filtros *ngIf="lShow"></app-filtros>
+<!-- <app-filtros *ngIf="lShow"></app-filtros> -->
+<app-filtros></app-filtros>
 
 <po-tabs>
   <po-tab
+    p-active=true
     p-label="NFe"
     (p-click)="MostraFiltro()"
   >
     <app-nfe></app-nfe>
   </po-tab>
-  <po-tab p-label="PO Tabs 2"></po-tab>
+  <!-- <po-tab p-label="PO Tabs 2"></po-tab>
   <po-tab p-label="PO Tabs 3"></po-tab>
   <po-tab p-label="PO Tabs 4"></po-tab>
   <po-tab p-label="PO Tabs 5"></po-tab>
@@ -19,5 +21,5 @@
   <po-tab p-label="PO Tabs 11"></po-tab>
   <po-tab p-label="PO Tabs 12"></po-tab>
   <po-tab p-label="PO Tabs 13"></po-tab>
-  <po-tab p-label="PO Tabs 14"></po-tab>
+  <po-tab p-label="PO Tabs 14"></po-tab> -->
 </po-tabs>
