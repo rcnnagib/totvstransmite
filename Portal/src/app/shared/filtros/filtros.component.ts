@@ -14,12 +14,6 @@ export class FiltrosComponent implements OnInit {
   todasFiliais: Array<string> = [];
   nameFiliais: string;
 
-  iconsOptions: Array<PoRadioGroupOption> = [
-    { label: 'po-icon-news', value: 'po-icon-news' },
-    { label: 'po-icon-calendar', value: 'po-icon-calendar' },
-    { label: 'po-icon-user', value: 'po-icon-user' },
-    { label: 'po-icon-telephone', value: 'po-icon-telephone' }
-  ];
 
   readonly toggleOptions: Array<PoSelectOption> = [
     { label: 'none', value: PoButtonGroupToggle.None },
@@ -27,7 +21,7 @@ export class FiltrosComponent implements OnInit {
     { label: 'multiple', value: PoButtonGroupToggle.Multiple }
   ];
 
-  readonly toggleOptStatus: Array<PoSelectOption> = [
+  readonly statusDoc: Array<PoSelectOption> = [
     { label: '', value: '' },
     { label: 'Recebido', value: 'Recebido' },
     { label: 'Assinado', value: 'Assinado' },
@@ -38,13 +32,13 @@ export class FiltrosComponent implements OnInit {
     { label: 'Cancelado', value: 'Cancelado' }
   ];
 
-  readonly toggleOptTipoNf: Array<PoSelectOption> = [
+  readonly tipoNf: Array<PoSelectOption> = [
     { label: '', value: '' },
     { label: 'Entrada', value: 'Entrada' },
     { label: 'Saída', value: 'Saída' }
   ];
 
-  readonly toggleOptAmbiente: Array<PoSelectOption> = [
+  readonly ambiente: Array<PoSelectOption> = [
     { label: '', value: '' },
     { label: 'Homologação', value: 'Homologação' },
     { label: 'Produção', value: 'Produção' }

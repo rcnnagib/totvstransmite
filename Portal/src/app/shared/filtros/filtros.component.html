@@ -8,12 +8,13 @@
       [(ngModel)]="todasFiliais"
       p-label="Filial"
       [p-options]="filiais"
+      p-placeholder-search="Selecione"
     >
     </po-multiselect>
 
-    <po-select class="po-md-3" name="status_documentos" p-label="Status de documentos" [p-options]="toggleOptStatus" p-required></po-select>
+    <po-select class="po-md-3" name="status_documentos" p-label="Status de documentos" [p-options]="statusDoc" p-required></po-select>
 
-    <po-select class="po-md-3" name="tipo_nfs" p-label="Tipo de NFs" [p-options]="toggleOptTipoNf"></po-select>
+    <po-select class="po-md-3" name="tipo_nfs" p-label="Tipo de NFs" [p-options]="tipoNf"></po-select>
 
     <po-datepicker class="po-md-2" name="data_inicial" p-label="Data Inicial"> </po-datepicker>
 
@@ -25,12 +26,12 @@
 
     <po-input class="po-md-1" name="serie" p-label="Série"> </po-input>
 
-    <po-select class="po-md-2" name="ambiente" p-label="Ambiente" [p-options]="toggleOptAmbiente"></po-select>
+    <po-select class="po-md-2" name="ambiente" p-label="Ambiente" [p-options]="ambiente"></po-select>
 
   </div>
 
   <div class="po-row">
-    <po-button class="po-md-2" p-label="Limpar filtro" (p-click)="restore()"> </po-button>
+    <po-button class="po-offset-lg-7 po-offset-xl-7 po-md-2" p-label="Limpar filtro" p-type="danger" (p-click)="restore()"> </po-button>
     <po-button class="po-md-2" p-label="Aplicar filtro" [p-disabled]="f.invalid" (p-click)="addButton(); f.reset()"> </po-button>
   </div>
 </form>
