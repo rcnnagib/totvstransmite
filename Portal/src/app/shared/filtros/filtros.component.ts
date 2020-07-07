@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoButtonGroupItem, PoButtonGroupToggle, PoNotificationService, PoSelectOption, PoRadioGroupOption, PoMultiselectOption } from '@po-ui/ng-components';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-filtros',
@@ -7,33 +8,21 @@ import { PoButtonGroupItem, PoButtonGroupToggle, PoNotificationService, PoSelect
   styleUrls: ['./filtros.component.css']
 })
 export class FiltrosComponent implements OnInit {
-  button: any;
-  buttons: Array<PoButtonGroupItem>;
-  small: boolean;
-  toggle: PoButtonGroupToggle;
   todasFiliais: Array<string> = [];
   nameFiliais: string;
 
-
-  readonly toggleOptions: Array<PoSelectOption> = [
-    { label: 'none', value: PoButtonGroupToggle.None },
-    { label: 'single', value: PoButtonGroupToggle.Single },
-    { label: 'multiple', value: PoButtonGroupToggle.Multiple }
-  ];
-
   readonly statusDoc: Array<PoSelectOption> = [
-    { label: '', value: '' },
-    { label: 'Recebido', value: 'Recebido' },
-    { label: 'Assinado', value: 'Assinado' },
-    { label: 'Inválido', value: 'Inválido' },
-    { label: 'Aguardando retorno', value: 'Pendente' },
-    { label: 'Rejeitado', value: 'Rejeitado' },
-    { label: 'Autorizado', value: 'Autorizado' },
-    { label: 'Cancelado', value: 'Cancelado' }
+    { label: 'Não transmitida', value: 'Não transmitida' },
+    { label: 'Autorizada', value: 'Autorizada' },
+    { label: 'Transmitida', value: 'Transmitida' },
+    { label: 'Cancelada', value: 'Cancelada' },
+    { label: 'Rejeitada', value: 'Rejeitada' },
+    { label: 'Inutilizada', value: 'Inutilizada' },
+    { label: 'Uso denegado', value: 'Uso denegado' }
   ];
 
-  readonly tipoNf: Array<PoSelectOption> = [
-    { label: '', value: '' },
+  readonly tipoDoc: Array<PoSelectOption> = [
+    { label: 'Todos', value: 'Todos' },
     { label: 'Entrada', value: 'Entrada' },
     { label: 'Saída', value: 'Saída' }
   ];
@@ -57,35 +46,16 @@ export class FiltrosComponent implements OnInit {
   constructor(private poNotification: PoNotificationService) {}
 
   ngOnInit() {
-    this.restore();
   }
 
-  action(button) {
-    this.poNotification.success(button.action);
-  }
-
-  addButton() {
-    this.buttons.push({
-      icon: this.button.icon,
-      label: this.button.label,
-      action: this.action.bind(this, this.button),
-      disabled: this.button.disabled,
-      tooltip: this.button.tooltip
-    });
-
-    this.button = {};
-  }
-
-  updateCampoFiliais() {
-    this.nameFiliais = this.filiais
-      .filter((employee: PoMultiselectOption) => this.todasFiliais.includes(<string>employee.value))
-      .map((employee: PoMultiselectOption) => employee.label)
-      .join(', ');
-  }
-
-  restore() {
-    this.button = {};
-    this.buttons = [];
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+    console.log(f.valid);
+    if (f.valid) {
+      this.poNotification.success('teste');
+    }else{
+      this.poNotification.error('teste');
+    }
   }
 
 }

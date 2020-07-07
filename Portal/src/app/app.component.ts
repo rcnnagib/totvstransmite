@@ -16,8 +16,10 @@ export class AppComponent{
 
   title = 'NFe';
 
+  public readonly logo: string = '../assets/img/totvs-logo.png';
+
   public readonly menuItems: Array<PoMenuPanelItem> = [
-    { label: 'Documentos', icon: 'po-icon po-icon-document', link: '../documentos' },
+    { label: 'Monitor de documentos', icon: 'po-icon po-icon-document', link: '../documentos' },
     { label: 'Gerenciamento', icon: 'po-icon po-icon-manufacture', link: '../gerenciamento' }
   ];
 }

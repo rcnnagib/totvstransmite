@@ -1,6 +1,14 @@
 <div class="po-wrapper">
-  <po-menu [p-menus]="menuItems"></po-menu>
-  <po-page-default [p-title]="title">
-  <router-outlet></router-outlet>
+
+  <po-menu
+    [p-menus]="menuItems"
+    p-filter=true
+    [p-logo]="logo"
+  ></po-menu>
+
+  <po-page-default
+    [p-title]="title">
+    <router-outlet></router-outlet>
   </po-page-default>
+
 </div>
