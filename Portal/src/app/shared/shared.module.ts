@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FiltrosComponent } from './filtros/filtros.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PoModule } from '@po-ui/ng-components';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 
@@ -15,7 +15,8 @@ import { PoTemplatesModule } from '@po-ui/ng-templates';
     CommonModule,
     FormsModule,
     PoTemplatesModule,
-    PoModule
+    PoModule,
+    ReactiveFormsModule
   ],
   exports: [
     FiltrosComponent

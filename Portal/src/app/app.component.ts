@@ -14,12 +14,12 @@ export class AppComponent{
   constructor() {
   }
 
-  title = 'NFe';
+  title = 'Monitor de documentos';
 
   public readonly logo: string = '../assets/img/totvs-logo.png';
 
   public readonly menuItems: Array<PoMenuPanelItem> = [
-    { label: 'Monitor de documentos', icon: 'po-icon po-icon-document', link: '../documentos' },
-    { label: 'Gerenciamento', icon: 'po-icon po-icon-manufacture', link: '../gerenciamento' }
+    { label: 'Monitor de documentos', icon: '', link: '../documentos' },
+    { label: 'Gerenciamento', icon: '', link: '../gerenciamento' }
   ];
 }

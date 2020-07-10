@@ -97,7 +97,7 @@ export class NfeComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.nfeService.NFes().subscribe( (nfes) => { this.items = nfes;} );
+    this.nfeService.NFes().subscribe( (nfes) => { this.items = nfes; } );
 
   }
   showMore(event){
