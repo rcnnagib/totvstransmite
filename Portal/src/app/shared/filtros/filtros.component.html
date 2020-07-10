@@ -1,133 +1,125 @@
-<hr />
+<po-container>
+  <form [formGroup]="formNfeMonitor">
+    <div class="po-row">
 
-<form #f="ngForm">
-  <div class="po-row">
+      <!-- Filiais -->
+      <po-multiselect
+        class="po-md-6"
+        name="todasFiliais"
+        p-label="Filial"
+        [p-options]="dadosIdEnt"
+        p-placeholder="Selecione uma ou mais filiais"
+        p-placeholder-search="Buscar filial"
+        p-required
+        formControlName="filial"
+      >
+      </po-multiselect>
 
-    <!-- Filiais -->
-    <po-multiselect
-      class="po-md-6"
-      name="todasFiliais"
-      ngModel
-      p-label="Filial"
-      [p-options]="filiais"
-      p-placeholder="Selecione uma ou mais filiais"
-      p-placeholder-search="Buscar filial"
-      p-required
-    >
-    </po-multiselect>
+      <!-- Status do documento -->
+      <po-multiselect
+        class="po-md-3"
+        name="statusDocumentos"
+        p-label="Status de documentos"
+        [p-options]="statusDoc"
+        p-placeholder="Selecione o status"
+        p-placeholder-search="Buscar status"
+        formControlName="statusDoc"
+      >
+      </po-multiselect>
 
-    <!-- Status do documento -->
-    <po-multiselect
-      class="po-md-3"
-      name="statusDocumentos"
-      ngModel
-      p-label="Status de documentos"
-      [p-options]="statusDoc"
-      p-placeholder="Selecione o status"
-      p-placeholder-search="Buscar status"
-      p-optional=true
-    >
-    </po-multiselect>
+      <!-- Tipo de documento -->
+      <po-select
+        class="po-md-3"
+        name="tipoNF"
+        p-label="Tipo de documento"
+        [p-options]="tipoNF"
+        p-placeholder="Selecione o tipo"
+        formControlName="tipoNf"
+      ></po-select>
 
-    <!-- Tipo de documento -->
-    <po-select
-      class="po-md-3"
-      name="tipoDoc"
-      p-label="Tipo de documento"
-      ngModel
-      [p-options]="tipoDoc"
-      p-placeholder="Selecione o tipo"
-      p-optional=true
-    ></po-select>
+      <!-- Data inicial -->
+      <po-datepicker
+        class="po-md-2"
+        name="dataInicial"
+        p-label="Data Inicial"
+        p-placeholder="dd/mm/aaaa"
+        formControlName="dataInicial"
+      ></po-datepicker>
 
-    <!-- Data inicial -->
-    <po-datepicker
-      class="po-md-2"
-      name="dataInicial"
-      p-label="Data Inicial"
-      ngModel
-      p-required
-      p-placeholder="dd/mm/aaaa"
-    ></po-datepicker>
+      <!-- Data final -->
+      <po-datepicker
+        class="po-md-2"
+        name="dataFinal"
+        p-label="Data Final"
+        p-placeholder="dd/mm/aaaa"
+        formControlName="dataFinal"
+      ></po-datepicker>
 
-    <!-- Data final -->
-    <po-datepicker
-      class="po-md-2"
-      name="dataFinal"
-      p-label="Data Final"
-      ngModel
-      p-required
-      p-placeholder="dd/mm/aaaa"
-    ></po-datepicker>
+      <!-- Numeração inicial -->
+      <po-input
+        class="po-md-2"
+        name="numeracaoInicial"
+        p-label="Numeração Inicial"
+        p-placeholder="000000000"
+        p-mask="999999999"
+        formControlName="docInicial"
+      ></po-input>
 
-    <!-- Numeração inicial -->
-    <po-input
-      class="po-md-2"
-      name="numeracaoInicial"
-      p-label="Numeração Inicial"
-      ngModel
-      p-placeholder="000000000"
-      p-mask="999999999"
-      p-optional=true
-    ></po-input>
+      <!-- Numeração final -->
+      <po-input
+        class="po-md-2"
+        name="numeracaoFinal"
+        p-label="Numeração Final"
+        p-placeholder="000000000"
+        p-mask="999999999"
+        formControlName="docFinal"
+      ></po-input>
 
-    <!-- Numeração final -->
-    <po-input
-      class="po-md-2"
-      name="numeracaoFinal"
-      p-label="Numeração Final"
-      ngModel
-      p-placeholder="000000000"
-      p-mask="999999999"
-      p-optional=true
-    ></po-input>
+      <!-- Série do documento -->
+      <po-input
+        class="po-md-1"
+        name="serie"
+        p-label="Série"
+        p-placeholder="000"
+        p-maxlength="3"
+        p-minlength="1"
+        p-mask="999"
+        formControlName="serie"
+      ></po-input>
 
-    <!-- Série do documento -->
-    <po-input
-      class="po-md-1"
-      name="serie"
-      p-label="Série"
-      ngModel
-      p-placeholder="000"
-      p-maxlength="3"
-      p-minlength="1"
-      p-mask-format-model=true
-      p-pattern='^[A-z0-9]{1,3}$'
-      p-optional=true
-    ></po-input>
+      <!-- Ambiente -->
+      <po-select
+        class="po-md-3"
+        name="ambiente"
+        p-label="Ambiente"
+        [p-options]="ambiente"
+        p-placeholder="Selecione o ambiente"
+        formControlName="ambiente"
+      ></po-select>
 
-    <!-- Ambiente -->
-    <po-select
-      class="po-md-3"
-      name="ambiente"
-      p-label="Ambiente"
-      ngModel
-      [p-options]="ambiente"
-      p-placeholder="Selecione o ambiente"
-      p-optional=true
-    ></po-select>
+    </div>
 
-  </div>
+    <div class="po-row">
 
-  <div class="po-row">
+      <!-- Botão limpar -->
+      <po-button
+        class="po-offset-lg-8 po-offset-xl-8 po-md-2"
+        p-label="Limpar filtro"
+        p-type="danger"
+        (p-click)="formNfeMonitor.reset()"
+      ></po-button>
 
-    <!-- Botão limpar -->
-    <po-button
-      class="po-offset-lg-8 po-offset-xl-8 po-md-2"
-      p-label="Limpar filtro"
-      p-type="danger"
-      (p-click)="f.reset()"
-    ></po-button>
+      <!-- Botão filtrar -->
+      <po-button
+        class="po-md-2"
+        p-label="Aplicar filtro"
+        [p-disabled]="formNfeMonitor.invalid"
+        (p-click)="onSubmit(); formNfeMonitor.reset()"
+      ></po-button>
 
-    <!-- Botão filtrar -->
-    <po-button
-      class="po-md-2"
-      p-label="Aplicar filtro"
-      [p-disabled]="f.invalid"
-      (p-click)="onSubmit(f); f.reset()"
-    ></po-button>
+    </div>
+  </form>
 
-  </div>
-</form>
+</po-container>
 
-<hr />
+<br>

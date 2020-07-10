@@ -1,6 +1,10 @@
+import { IdEnt } from './../../features/documentos/nfe/id-ent';
+import { AppServiceService } from 'src/app/app-service.service';
 import { Component, OnInit } from '@angular/core';
-import { PoButtonGroupItem, PoButtonGroupToggle, PoNotificationService, PoSelectOption, PoRadioGroupOption, PoMultiselectOption } from '@po-ui/ng-components';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
+
+import { PoNotificationService, PoSelectOption, PoMultiselectOption } from '@po-ui/ng-components';
+import { NfeMonitoramentoInterface } from '../nfe/nfe-monitoramento-interface';
 
 @Component({
   selector: 'app-filtros',
@@ -8,8 +12,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./filtros.component.css']
 })
 export class FiltrosComponent implements OnInit {
-  todasFiliais: Array<string> = [];
-  nameFiliais: string;
+  formNfeMonitor: FormGroup;
+  dadosIdEnt: Array<IdEnt>;
 
   readonly statusDoc: Array<PoSelectOption> = [
     { label: 'Não transmitida', value: 'Não transmitida' },
@@ -18,10 +22,10 @@ export class FiltrosComponent implements OnInit {
     { label: 'Cancelada', value: 'Cancelada' },
     { label: 'Rejeitada', value: 'Rejeitada' },
     { label: 'Inutilizada', value: 'Inutilizada' },
-    { label: 'Uso denegado', value: 'Uso denegado' }
+    { label: 'Denegada', value: 'Denegada' }
   ];
 
-  readonly tipoDoc: Array<PoSelectOption> = [
+  readonly tipoNF: Array<PoSelectOption> = [
     { label: 'Todos', value: 'Todos' },
     { label: 'Entrada', value: 'Entrada' },
     { label: 'Saída', value: 'Saída' }
@@ -33,7 +37,7 @@ export class FiltrosComponent implements OnInit {
     { label: 'Produção', value: 'Produção' }
   ];
 
-  public readonly filiais: Array<PoMultiselectOption> = [
+  readonly filiais: Array<PoMultiselectOption> = [
     { value: '412341', label: 'D MG 01' },
     { value: '518734', label: 'D MG 02' },
     { value: '986237', label: 'M SP 01' },
@@ -43,19 +47,39 @@ export class FiltrosComponent implements OnInit {
     { value: '423837', label: 'X FIS24' }
   ];
 
-  constructor(private poNotification: PoNotificationService) {}
+  constructor(private poNotification: PoNotificationService, private formBuilder: FormBuilder, private idEntService: AppServiceService) {}
 
   ngOnInit() {
+    this.createForm();
+    this.idEntService.IdEnt().subscribe( (ident) => { this.dadosIdEnt = ident; console.log(ident)});
   }
 
-  onSubmit(f: NgForm) {
-    console.log(f.value);
-    console.log(f.valid);
-    if (f.valid) {
+  createForm(){
+    this.formNfeMonitor = this.formBuilder.group({
+      filial: '',
+      statusDoc: '',
+      tipoNf: '',
+      dataInicial: '',
+      dataFinal: '',
+      docInicial: '',
+      docFinal: '',
+      serie: '',
+      ambiente: ''
+    });
+  }
+
+  onSubmit(){
+    const novaConsultaNfe = this.formNfeMonitor.getRawValue() as NfeMonitoramentoInterface;
+    console.log(novaConsultaNfe);
+
+    if (this.formNfeMonitor.valid) {
       this.poNotification.success('teste');
     }else{
       this.poNotification.error('teste');
     }
+
+    // Usar o método reset para limpar os controles na tela
+    this.formNfeMonitor.reset();
   }
 
 }

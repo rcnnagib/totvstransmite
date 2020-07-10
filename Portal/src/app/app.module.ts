@@ -12,6 +12,7 @@ import { NfeModule } from './features/documentos/nfe/nfe.module';
 import { GerenciamentoComponent } from './features/gerenciamento/gerenciamento.component';
 import { DocumentosComponent } from './features/documentos/documentos.component';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,11 @@ import { SharedModule } from './shared/shared.module';
     RouterModule.forRoot([]),
     PoTemplatesModule,
     NfeModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    ReactiveFormsModule
   ],
   providers: [AppServiceService],
   bootstrap: [AppComponent]
