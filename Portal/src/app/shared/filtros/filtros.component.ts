@@ -1,10 +1,13 @@
-import { IdEnt } from './../../features/documentos/nfe/id-ent';
-import { AppServiceService } from 'src/app/app-service.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { PoNotificationService, PoSelectOption, PoMultiselectOption } from '@po-ui/ng-components';
 import { NfeMonitoramentoInterface } from '../nfe/nfe-monitoramento-interface';
+import { AppServiceService } from 'src/app/app-service.service';
+import { IdEnt } from './../../features/documentos/nfe/id-ent';
+import { StatusDoc } from './enumStatusDocNFe';
+import { AmbienteNfe } from './enumAmbienteNFe';
+import { TipoDocNFe } from './enumTipoDocNFe';
 
 @Component({
   selector: 'app-filtros',
@@ -16,25 +19,26 @@ export class FiltrosComponent implements OnInit {
   dadosIdEnt: Array<IdEnt>;
 
   readonly statusDoc: Array<PoSelectOption> = [
-    { label: 'Não transmitida', value: 'Não transmitida' },
-    { label: 'Autorizada', value: 'Autorizada' },
-    { label: 'Transmitida', value: 'Transmitida' },
-    { label: 'Cancelada', value: 'Cancelada' },
-    { label: 'Rejeitada', value: 'Rejeitada' },
-    { label: 'Inutilizada', value: 'Inutilizada' },
-    { label: 'Denegada', value: 'Denegada' }
+    { label: 'Todos', value: StatusDoc.Todos },
+    { label: 'Não transmitida', value: StatusDoc.NaoTransmitida },
+    { label: 'Autorizada', value: StatusDoc.Autorizada },
+    { label: 'Transmitida', value: StatusDoc.Transmitida },
+    { label: 'Cancelada', value: StatusDoc.Cancelada },
+    { label: 'Rejeitada', value: StatusDoc.Rejeitada },
+    { label: 'Inutilizada', value: StatusDoc.Inutilizada },
+    { label: 'Denegada', value: StatusDoc.Denegada }
   ];
 
-  readonly tipoNF: Array<PoSelectOption> = [
-    { label: 'Todos', value: 'Todos' },
-    { label: 'Entrada', value: 'Entrada' },
-    { label: 'Saída', value: 'Saída' }
+  readonly tipoDoc: Array<PoSelectOption> = [
+    { label: 'Ambos', value: TipoDocNFe.Ambos },
+    { label: 'Entrada', value: TipoDocNFe.Entrada },
+    { label: 'Saída', value: TipoDocNFe.Saida }
   ];
 
   readonly ambiente: Array<PoSelectOption> = [
-    { label: '', value: '' },
-    { label: 'Homologação', value: 'Homologação' },
-    { label: 'Produção', value: 'Produção' }
+    { label: 'Todos', value: AmbienteNfe.Ambos },
+    { label: 'Produção', value: AmbienteNfe.Producao },
+    { label: 'Homologação', value: AmbienteNfe.Homologacao }
   ];
 
   readonly filiais: Array<PoMultiselectOption> = [
@@ -51,35 +55,52 @@ export class FiltrosComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.idEntService.IdEnt().subscribe( (ident) => { this.dadosIdEnt = ident; console.log(ident)});
+    this.idEntService.IdEnt().subscribe( (ident) => { this.dadosIdEnt = ident; console.log(ident); });
   }
 
-  createForm(){
+  // Cria o formulário
+  createForm(): void{
+
     this.formNfeMonitor = this.formBuilder.group({
-      filial: '',
-      statusDoc: '',
-      tipoNf: '',
-      dataInicial: '',
-      dataFinal: '',
-      docInicial: '',
-      docFinal: '',
-      serie: '',
-      ambiente: ''
+      filial:       [[], Validators.required],
+      statusDoc:    [[]],
+      tipoDoc:      [TipoDocNFe.Ambos],
+      dataInicial:  [new Date()],
+      dataFinal:    [new Date()],
+      docInicial:   ['', Validators.maxLength(9)],
+      docFinal:     ['', Validators.maxLength(9)],
+      serie:        ['', Validators.maxLength(3)],
+      ambiente:     [AmbienteNfe.Ambos]
     });
+
   }
 
-  onSubmit(){
+  // Envio da requisição do formulário
+  onSubmit(): void {
     const novaConsultaNfe = this.formNfeMonitor.getRawValue() as NfeMonitoramentoInterface;
     console.log(novaConsultaNfe);
 
-    if (this.formNfeMonitor.valid) {
-      this.poNotification.success('teste');
-    }else{
-      this.poNotification.error('teste');
-    }
+    // if (this.formNfeMonitor.valid) {
+    //   this.poNotification.success('teste');
+    // }else{
+    //   this.poNotification.error('teste');
+    // }
+  }
 
-    // Usar o método reset para limpar os controles na tela
+  // Limpa formulário
+  clearForm(): void{
+
     this.formNfeMonitor.reset();
+    this.formNfeMonitor.get('filial').setValue([]);
+    this.formNfeMonitor.get('statusDoc').setValue([]);
+    this.formNfeMonitor.get('tipoDoc').setValue(TipoDocNFe.Ambos);
+    this.formNfeMonitor.get('dataInicial').setValue(new Date());
+    this.formNfeMonitor.get('dataFinal').setValue(new Date());
+    this.formNfeMonitor.get('docInicial').setValue('');
+    this.formNfeMonitor.get('docFinal').setValue('');
+    this.formNfeMonitor.get('serie').setValue('');
+    this.formNfeMonitor.get('ambiente').setValue(AmbienteNfe.Ambos);
+
   }
 
 }
