@@ -30,11 +30,11 @@
       <!-- Tipo de documento -->
       <po-select
         class="po-md-3"
-        name="tipoNF"
+        name="tipoDoc"
         p-label="Tipo de documento"
-        [p-options]="tipoNF"
+        [p-options]="tipoDoc"
         p-placeholder="Selecione o tipo"
-        formControlName="tipoNf"
+        formControlName="tipoDoc"
       ></po-select>
 
       <!-- Data inicial -->
@@ -44,6 +44,7 @@
         p-label="Data Inicial"
         p-placeholder="dd/mm/aaaa"
         formControlName="dataInicial"
+        [p-max-date]="formNfeMonitor.get('dataFinal').value"
       ></po-datepicker>
 
       <!-- Data final -->
@@ -53,6 +54,7 @@
         p-label="Data Final"
         p-placeholder="dd/mm/aaaa"
         formControlName="dataFinal"
+        [p-min-date]="formNfeMonitor.get('dataInicial').value"
       ></po-datepicker>
 
       <!-- Numeração inicial -->
@@ -106,7 +108,7 @@
         class="po-offset-lg-8 po-offset-xl-8 po-md-2"
         p-label="Limpar filtro"
         p-type="danger"
-        (p-click)="formNfeMonitor.reset()"
+        (p-click)="clearForm()"
       ></po-button>
 
       <!-- Botão filtrar -->
@@ -114,7 +116,7 @@
         class="po-md-2"
         p-label="Aplicar filtro"
         [p-disabled]="formNfeMonitor.invalid"
-        (p-click)="onSubmit(); formNfeMonitor.reset()"
+        (p-click)="onSubmit();"
       ></po-button>
 
     </div>

@@ -103,14 +103,14 @@
       "im": "90814274",
       "ie": "111010945111",
       "nome": "TOTVS SP",
-      "nomefantasia": "TOTVS SÂO PAULO",
+      "nomefantasia": "TOTVS SÃƒO PAULO",
       "cep": "02511000",
       "endereco": "AV. BRAZ LEME",
       "nun": "1000",
       "complemento": "fundos",
-      "bairro": "Jd. São Bento",
+      "bairro": "Jd. SÃ£o Bento",
       "codigomunicipio": "3550308",
-      "municipio": "São Paulo",
+      "municipio": "SÃ£o Paulo",
       "fone": "94495232",
       "mail": "fernando.junior@totvs.com.br"
     },{
@@ -126,7 +126,7 @@
       "complemento": "fundos",
       "bairro": "Matriz",
       "codigomunicipio": "3550308",
-      "municipio": "São Paulo",
+      "municipio": "SÃ£o Paulo",
       "fone": "94495232",
       "mail": "fernando.junior@totvs.com.br"
     }
@@ -150,7 +150,7 @@
    "entidade2": [
     {
       "value": 1,
-      "label": "TOTVS SÃO PAULO  API"
+      "label": "TOTVS SÃƒO PAULO  API"
     },
     {
       "value": 2,

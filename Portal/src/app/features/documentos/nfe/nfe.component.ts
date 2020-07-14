@@ -46,13 +46,15 @@ export class NfeComponent implements OnInit {
       type: 'label',
       width: '15%',
       labels: [
-        { value: 1, color: 'color-01', label: 'Recebido', tooltip: 'Recebido' },
-        { value: 2, color: 'color-05', label: 'Assinado', tooltip: 'Assinado' },
-        { value: 3, color: 'color-08', label: 'Inválido', tooltip: 'Inválido' },
-        { value: 4, color: 'color-09', label: 'Pendente', tooltip: 'Aguardando retorno' },
-        { value: 5, color: 'color-07', label: 'Rejeitado', tooltip: 'Rejeitado' },
-        { value: 6, color: 'color-11', label: 'Autorizado', tooltip: 'Autorizado' },
-        { value: 7, color: 'color-06', label: 'Cancelado', tooltip: 'Cancelado' }]
+        { value: 1, color: 'color-01', label: 'Recebido' , tooltip: 'Recebido' },
+        { value: 2, color: 'color-02', label: 'Assinado' , tooltip: 'Assinado' },
+        { value: 3, color: 'color-06', label: 'Inválido' , tooltip: 'Inválido' },
+        { value: 4, color: 'color-10', label: 'Pendente' , tooltip: 'Pendente' },
+        { value: 5, color: 'color-07', label: 'Rejeitado' , tooltip: 'Rejeitado' },
+        { value: 6, color: 'color-03', label: 'Autorizado' , tooltip: 'Autorizado' },
+        { value: 7, color: 'color-08', label: 'Cancelado' , tooltip: 'Cancelado' },
+        { value: 8, color: 'color-04', label: 'Contingência', tooltip: 'Contingência' },
+        { value: 9, color: 'color-12', label: 'Denegado' , tooltip: 'Denegado' }]
     },
     {
       property: 'documentId',
